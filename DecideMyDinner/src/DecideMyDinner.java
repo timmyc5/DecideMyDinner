@@ -2,6 +2,13 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.io.*;
 
+
+/**
+ * This class will randomly generate a restaurant suggestion; the user has two option: (1) Dine-In restaurants
+ * or (2) Take-Out restaurants. The user asked which kind of restaurant they are looking for, and the restaurant
+ * list will be generated from this suggestions. The user has the option to continue to generate restaurants until
+ * one is found that they are happy with.
+ * */
 public class DecideMyDinner {
 
 	public static void main(String [] args) {
@@ -38,7 +45,10 @@ public class DecideMyDinner {
 		}
 	}
 
-	//method to populate a list with dine-in food options
+	/**
+	 * Method to populate a list with Dine-In suggestions
+	 * @return dineIn - the list of dine-in restaurants read in from the file
+	 * */
 	public static ArrayList<String> populateDineInList(ArrayList<String> dineIn) {
 
 		File file = new File("/Users/timmyc5/Desktop/JavaPrac/DecideMyDinner/DecideMyDinner/src/DineIn.txt");
@@ -57,7 +67,10 @@ public class DecideMyDinner {
 		return dineIn;
 	}
 
-	//method to populate a list with take-out food options
+	/**
+	 * Method to populate a list with Take-Out suggestions
+	 * @return takeOut - the list of take-out restaurants read in from the file
+	 * */
 	public static ArrayList<String> populateTakeOutList(ArrayList<String> takeOut) {
 
 		File file = new File("/Users/timmyc5/Desktop/JavaPrac/DecideMyDinner/DecideMyDinner/src/TakeOut.txt");
@@ -76,12 +89,20 @@ public class DecideMyDinner {
 		return takeOut;
 	}
 
+	/**
+	 * Method to choose a restaurant after population
+	 * @return the name of a restaurant from the list of suggestions
+	 * */
 	public static String getPlaceToEat(ArrayList<String> list) {
 		int num = genRandomNum(0, list.size()-1);
 
 		return list.get(num);
 	}
 
+	/**
+	 * Method to generate a random number; used as the position in the list to return
+	 * @return rand = random number
+	 * */
 	public static int genRandomNum(int lowerBound, int upperBound) {
 		int rand = ThreadLocalRandom.current().nextInt(lowerBound, upperBound + 1);
 
